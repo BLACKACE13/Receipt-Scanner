@@ -18,7 +18,7 @@ Session = sessionmaker(bind=engine)
 
 @app.post("/upload")
 async def upload(file: UploadFile = File(...)):
-    path = UPLOAD_DIR + file.filename
+    path = os.path.join(UPLOAD_DIR, file.filename)
 
     # Save uploaded file
     with open(path, "wb") as f:
